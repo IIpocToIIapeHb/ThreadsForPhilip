@@ -33,10 +33,9 @@ public class Ship implements Runnable{
 
     @Override
     public String toString() {
-        return "Ship{" +
-                "id=" + id +
-                ", loaded=" + loaded +
-                '}';
+        return "Ship " +
+                + id +
+                ", loaded=" + loaded;
     }
 
 }
