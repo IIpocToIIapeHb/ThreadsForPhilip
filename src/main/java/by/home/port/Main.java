@@ -18,16 +18,15 @@ public class Main {
         docks.add(new Dock(1));
         docks.add(new Dock(2));
         docks.add(new Dock(3));
-        Port port = Port.getInstance();
+        Port port = Port.getPort();
         port.setDocks(docks);
+
         ObjectMapper mapper = new ObjectMapper();
         Ships shipsWrapper = mapper.readValue(new File(INPUT_FILE),Ships.class);
-
         List<Ship> ships = shipsWrapper.getShips();
-       // ships.stream().forEach(System.out::println);
+
         ExecutorService executor= Executors.newFixedThreadPool(ships.size());
         ships.stream().forEach(ship -> executor.submit(ship));
-
         executor.shutdown();
     }
 }

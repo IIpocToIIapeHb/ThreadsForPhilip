@@ -5,37 +5,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Dock {
 
     private int id;
+    private Process process;
 
     public Dock(int id) {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void process(Ship ship) {
-        if (ship.isLoaded() == true ){
-            unloadProcess(ship);
+        if (ship.isLoaded()){
+            process = new UnloadProcess();
         }else {
-            loadProcess(ship);
+            process = new LoadProcess();
         }
-
-    }
-
-    private void  unloadProcess(Ship ship){
-        System.out.println(ship.toString() + " has been unloading in the dock: " + id);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ship.setLoaded(false);
-    }
-
-    private void  loadProcess(Ship ship){
-        System.out.println(ship.toString() + " has been loading in the dock: " + id);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ship.setLoaded(true);
+        process.activate(ship, this);
     }
 }

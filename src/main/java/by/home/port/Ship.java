@@ -26,7 +26,7 @@ public class Ship implements Runnable{
 
     @Override
     public void run() {
-        Port port = Port.getInstance();
+        Port port = Port.getPort();
         port.process(this);
 
     }
