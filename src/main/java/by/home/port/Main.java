@@ -17,8 +17,9 @@ public class Main {
         Port port = Port.getInstance();
         List<Dock> docks = new ArrayList<>();
         for (int i = 0; i < port.getDocksNumber(); i++) {
-            docks.add(new Dock(++i));
+            docks.add(new Dock(i+1));
         }
+
         port.setDocks(docks);
 
         ObjectMapper mapper = new ObjectMapper();

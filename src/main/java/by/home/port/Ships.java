@@ -5,10 +5,6 @@ import java.util.List;
 public class Ships {
     private List<Ship> ships;
 
-    public Ships(List<Ship> ships) {
-        this.ships = ships;
-    }
-
     public Ships() {
     }
 
