@@ -58,7 +58,6 @@ public class Port {
 
         } catch (InterruptedException e) {
             LOGGER.error(e);
-
         }
     }
 }
