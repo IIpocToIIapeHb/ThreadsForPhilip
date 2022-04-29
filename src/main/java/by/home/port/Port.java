@@ -7,29 +7,32 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Port {
     private final static int DOCKS_NUMBER = 3;
-    List<Dock> docks;
+    private List<Dock> docks;
     private Lock lock = new ReentrantLock();
     private Semaphore semaphore = new Semaphore(DOCKS_NUMBER);
-    private static volatile Port port;
+    private static volatile Port instance;
 
     public void setDocks(List<Dock> docks) {
         this.docks = docks;
     }
 
-    public static Port getPort() {
-        Port localInstance = port;
+    public int getDocksNumber(){
+        return DOCKS_NUMBER;
+        }
+    public static Port getInstance() {
+        Port localInstance = instance;
         if (localInstance == null) {
             synchronized (Port.class) {
-                localInstance = port;
+                localInstance = instance;
                 if (localInstance == null) {
-                    port = localInstance = new Port();
+                    instance = localInstance = new Port();
                 }
             }
         }
         return localInstance;
     }
 
-    void process(Ship ship) {
+    public void process(Ship ship) {
 
         try {
             semaphore.acquire();

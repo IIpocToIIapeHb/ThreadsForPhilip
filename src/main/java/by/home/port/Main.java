@@ -14,11 +14,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        Port port = Port.getInstance();
         List<Dock> docks = new ArrayList<>();
-        docks.add(new Dock(1));
-        docks.add(new Dock(2));
-        docks.add(new Dock(3));
-        Port port = Port.getPort();
+        for (int i = 0; i < port.getDocksNumber(); i++) {
+            docks.add(new Dock(++i));
+        }
         port.setDocks(docks);
 
         ObjectMapper mapper = new ObjectMapper();
