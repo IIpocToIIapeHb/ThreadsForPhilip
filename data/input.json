@@ -1,0 +1,24 @@
+{
+  "ships": [
+    {
+      "id": 1,
+      "loaded": true
+    },
+    {
+      "id": 2,
+      "loaded": false
+    },
+    {
+      "id": 3,
+      "loaded": false
+    },
+    {
+      "id": 4,
+      "loaded": false
+    },
+    {
+      "id": 5,
+      "loaded": true
+    }
+  ]
+}
